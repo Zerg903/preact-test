@@ -1,0 +1,19 @@
+.nav .active {
+  color: black;
+  cursor: default;
+}
+
+.nav .active:hover {
+  cursor: default;
+}
+
+.counter-btn {
+  display: inline-block;
+  width: 60px;
+}
+
+.counter-text {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+}
