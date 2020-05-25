@@ -1,5 +1,9 @@
 import { h } from 'preact'
 
-export const PageHeader = (props: { text: string }) => (
-  <h3 class="mb-4 px-3">{props.text}</h3>
+type Props = {
+  text: string
+}
+
+export const PageHeader = (props: Props) => (
+  <h3 class="my-4 px-3">{props.text}</h3>
 )

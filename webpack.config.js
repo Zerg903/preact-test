@@ -64,7 +64,7 @@ module.exports = env => {
         filename: fileName + '.css',
       }),
       new HtmlWebpackPlugin({
-        title: 'PREACT - Тест',
+        title: 'preact test',
         favicon: 'public/favicon.ico',
         template: 'public/index.html',
         path: '',
