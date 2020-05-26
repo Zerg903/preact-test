@@ -10,24 +10,15 @@ export function useFetch<T>(url: string): FetchState<T> {
 
   useEffect(() => {
 
-    let mounted = true;
+    const controller = new AbortController()
+    const signal = controller.signal
 
-    async function fetchData() {
-      try {
-        let response = await fetch(url)
-        const json = await response.json();
-        if (mounted)
-          setData({ status: 'success', json })
-      }
-      catch{
-        if (mounted)
-          setData({ status: 'error', json: undefined })
-      }
-    }
+    fetch(url, { signal: signal })
+      .then(responce => responce.json())
+      .then(json => { setData({ status: 'success', json }) })
+      .catch(_ => { setData({ status: 'error', json: undefined }) })
 
-    fetchData()
-
-    return () => { mounted = false; };
+    return () => controller.abort();
   }, [url]);
 
   return data;
