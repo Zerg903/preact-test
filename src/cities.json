@@ -1,0 +1,76 @@
+ [{
+     "id": 0,
+     "name": "Thermal",
+     "streets": [{
+         "id": 0,
+         "name": "Prospect Street"
+       },
+       {
+         "id": 1,
+         "name": "Mill Avenue"
+       },
+       {
+         "id": 2,
+         "name": "Bayview Avenue"
+       },
+       {
+         "id": 3,
+         "name": "Dare Court"
+       },
+       {
+         "id": 4,
+         "name": "Whitty Lane"
+       }
+     ]
+   },
+   {
+     "id": 1,
+     "name": "Garnet",
+     "streets": [{
+         "id": 5,
+         "name": "Loring Avenue"
+       },
+       {
+         "id": 6,
+         "name": "Bennet Court"
+       },
+       {
+         "id": 7,
+         "name": "Veranda Place"
+       },
+       {
+         "id": 8,
+         "name": "Forbell Street"
+       },
+       {
+         "id": 9,
+         "name": "Malta Street"
+       }
+     ]
+   },
+   {
+     "id": 2,
+     "name": "Greenbush",
+     "streets": [{
+         "id": 10,
+         "name": "Erasmus Street"
+       },
+       {
+         "id": 11,
+         "name": "Horace Court"
+       },
+       {
+         "id": 12,
+         "name": "Cortelyou Road"
+       },
+       {
+         "id": 13,
+         "name": "Village Court"
+       },
+       {
+         "id": 14,
+         "name": "Hanson Place"
+       }
+     ]
+   }
+ ]
