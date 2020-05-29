@@ -14,14 +14,14 @@ export const FormExample = () => {
       <PageHeader text="Form example" />
       <div class="row">
         <div class="col-6">
-          {SwitchState(state)}
+          {switchView(state)}
         </div>
       </div>
     </Fragment>
   )
 }
 
-const SwitchState = (state: FetchState<City[]>) => {
+const switchView = (state: FetchState<City[]>) => {
 
   let View: JSX.Element
 
