@@ -19,20 +19,20 @@ type State = {
 const initialState: State = {
   cityId: '',
   streetId: '',
-  name: ''
-};
+  name: '',
+}
 
 const reducer = (state: State, action: { field: keyof State, value: string }): State => {
 
   if (action.field === 'cityId')
-    return { ...state, 'cityId': action.value, 'streetId': '' }
+    return { ...state, cityId: action.value, streetId: '' }
 
   return { ...state, [action.field]: action.value }
 }
 
 const validate = (state: State) => {
 
-  var errors: { [key in keyof State]?: string } = {}
+  const errors: { [key in keyof State]?: string } = {}
 
   if (state.cityId === '')
     errors.cityId = 'Field "City" is required'
@@ -43,7 +43,7 @@ const validate = (state: State) => {
   if (state.name === '')
     errors.name = 'Field "Name" is required'
 
-  return errors;
+  return errors
 }
 
 const ItemMapper = (item: { id: number, name: string }): ListItem => ({ value: item.id.toString(), name: item.name })
@@ -62,11 +62,11 @@ export const Form = ({ cities }: Props) => {
     else
       setDisplayErrors(true)
 
-    e.preventDefault();
+    e.preventDefault()
   }
 
   const onChange = (e: JSX.TargetedEvent<HTMLElement, Event>) => {
-    var target = e.target as unknown as { name: keyof State, value: string }
+    const target = e.target as unknown as { name: keyof State, value: string }
     dispatch({ field: target.name, value: target.value })
   }
 

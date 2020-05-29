@@ -6,20 +6,20 @@ export type FetchState<T> =
 
 export function useFetch<T>(url: string): FetchState<T> {
 
-  const [data, setData] = useState<FetchState<T>>({ status: 'fetching', json: undefined });
+  const [data, setData] = useState<FetchState<T>>({ status: 'fetching', json: undefined })
 
   useEffect(() => {
 
     const controller = new AbortController()
     const signal = controller.signal
 
-    fetch(url, { signal: signal })
+    fetch(url, { signal })
       .then(responce => responce.json())
       .then(json => { setData({ status: 'success', json }) })
-      .catch(_ => { setData({ status: 'error', json: undefined }) })
+      .catch(() => { setData({ status: 'error', json: undefined }) })
 
-    return () => controller.abort();
-  }, [url]);
+    return () => controller.abort()
+  }, [url])
 
-  return data;
+  return data
 }

@@ -6,7 +6,7 @@ import { City } from '~/models/City'
 
 export const FormExample = () => {
 
-  const url = '/assets/cities.json';
+  const url = '/assets/cities.json'
   const state = useFetch<City[]>(url)
 
   return (
@@ -27,15 +27,21 @@ const SwitchState = (state: FetchState<City[]>) => {
 
   switch (state.status) {
     case 'success':
-      const cities = normolize(state.json)
-      View = <Form cities={cities} />
-      break;
+      {
+        const cities = normolize(state.json)
+        View = <Form cities={cities} />
+      }
+      break
     case 'error':
-      View = <div class=".text-danger">errror!</div>
-      break;
+      {
+        View = <div class=".text-danger">errror!</div>
+      }
+      break
     default:
-      View = <div class="text-primary">fetching...</div>
-      break;
+      {
+        View = <div class="text-primary">fetching...</div>
+      }
+      break
   }
 
   return View

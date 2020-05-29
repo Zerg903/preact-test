@@ -13,23 +13,29 @@ type Item = {
 
 export const ImageList = (props: Props) => {
 
-  let url = `http://jsonplaceholder.typicode.com/photos`;
+  const url = 'http://jsonplaceholder.typicode.com/photos'
 
-  const state = useFetch<Item[]>(url);
+  const state = useFetch<Item[]>(url)
 
   let View: JSX.Element
 
   switch (state.status) {
     case 'success':
-      const items = state.json.slice(0, props.size)
-      View = <div>{items.map(i => <Image {...i} />)}</div>
-      break;
+      {
+        const items = state.json.slice(0, props.size)
+        View = <div>{items.map(i => <Image {...i} />)}</div>
+      }
+      break
     case 'error':
-      View = <div class=".text-danger">errror!</div>
-      break;
+      {
+        View = <div class=".text-danger">errror!</div>
+      }
+      break
     default:
-      View = <div class="text-primary">fetching...</div>
-      break;
+      {
+        View = <div class="text-primary">fetching...</div>
+      }
+      break
   }
 
   return View

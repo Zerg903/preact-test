@@ -3,4 +3,4 @@ import './styles.css'
 import 'bootstrap-css-only/css/bootstrap.min.css'
 import { App } from '~/app'
 
-render(<App />, document.getElementById('app')!);
+render(<App />, document.getElementById('app')!)
