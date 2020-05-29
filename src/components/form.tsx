@@ -1,16 +1,11 @@
 import { h, JSX } from 'preact'
 import { useReducer, useState } from 'preact/hooks'
 import { ListItem, makeOptions } from '~/utils/list-item'
+import { City } from '~/models/City'
 
 export type Props = {
   cities: {
-    byId: {
-      [id: number]: {
-        id: number,
-        name: string,
-        streets: { id: number, name: string }[]
-      }
-    }
+    byId: { [id: number]: City }
     allIds: number[]
   }
 }

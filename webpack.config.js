@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const {
   CleanWebpackPlugin,
 } = require('clean-webpack-plugin')
@@ -68,6 +69,12 @@ module.exports = env => {
         favicon: 'public/favicon.ico',
         template: 'public/index.html',
         path: '',
+      }),
+      new CopyPlugin({
+        patterns: [{
+          from: 'public/assets',
+          to: 'assets'
+        }],
       }),
     ],
     output: {
