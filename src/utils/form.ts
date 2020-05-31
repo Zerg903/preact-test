@@ -1,7 +1,7 @@
 import { JSX } from 'preact'
 import { useMemo, useState } from 'preact/hooks'
 
-export type Action<TState> = { field: keyof TState, value: string }
+export type Action<TState> = { field: keyof TState, value: any }
 export type Errors<TState> = { [key in keyof TState]?: string }
 export type Validator<TState> = (state: TState, errors: Errors<TState>) => void
 
@@ -9,6 +9,13 @@ export const onChangeHandler = <TState>(dispatch: (action: Action<TState>) => vo
   return (e: JSX.TargetedEvent<HTMLElement, Event>) => {
     const target = e.target as unknown as { name: keyof TState, value: string }
     dispatch({ field: target.name, value: target.value })
+  }
+}
+
+export const onClickHandler = <TState>(dispatch: (action: Action<TState>) => void) => {
+  return (e: JSX.TargetedEvent<HTMLElement, Event>) => {
+    const target = e.target as unknown as { name: keyof TState, checked: string }
+    dispatch({ field: target.name, value: target.checked })
   }
 }
 
