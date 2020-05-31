@@ -2,7 +2,7 @@ import { Fragment, h, JSX } from 'preact'
 import { PageHeader } from '~/components/page-header'
 import { Form, Props } from '~/components/form'
 import { useFetch, FetchState } from '~/utils/use-fetch'
-import { City } from '~/models/City'
+import { City } from '~/models/city'
 
 export const FormExample = () => {
 

@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact'
 import { useReducer, useState } from 'preact/hooks'
 import { ListItem, makeOptions } from '~/utils/list-item'
-import { City } from '~/models/City'
+import { City } from '~/models/city'
 
 export type Props = {
   cities: {
