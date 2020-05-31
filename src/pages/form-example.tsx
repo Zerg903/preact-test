@@ -28,8 +28,8 @@ const switchView = (state: FetchState<City[]>) => {
   switch (state.status) {
     case 'success':
       {
-        const cities = normolize(state.json)
-        View = <Form cities={cities} />
+        const data = normolize(state.json)
+        View = <Form data={data} />
       }
       break
     case 'error':
@@ -47,8 +47,8 @@ const switchView = (state: FetchState<City[]>) => {
   return View
 }
 
-const normolize = (json: City[]): Props['cities'] =>
-  json.reduce<Props['cities']>(
+const normolize = (json: City[]): Props['data'] =>
+  json.reduce<Props['data']>(
     (acc, item) => {
       const id = item.id
       acc.allIds.push(id)
