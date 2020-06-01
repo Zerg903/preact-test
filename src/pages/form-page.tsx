@@ -2,9 +2,10 @@ import { Fragment, h, JSX } from 'preact'
 import { PageHeader } from '~/components/page-header'
 import { Form, Props } from '~/components/form'
 import { useFetch, FetchState } from '~/utils/use-fetch'
-import { City } from '~/models/city'
+import { City } from '~/models'
+import { Message } from '~/components/message'
 
-export const FormExample = () => {
+export const FormPage = () => {
 
   const url = '/assets/cities.json'
   const state = useFetch<City[]>(url)
@@ -34,12 +35,12 @@ const switchView = (state: FetchState<City[]>) => {
       break
     case 'error':
       {
-        View = <div class=".text-danger">errror!</div>
+        View = <Message text="errror!" type="danger" />
       }
       break
     default:
       {
-        View = <div class="text-primary">fetching...</div>
+        View = <Message text="fetching..." type="default" />
       }
       break
   }

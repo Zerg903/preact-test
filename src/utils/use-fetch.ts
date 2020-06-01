@@ -12,13 +12,19 @@ export function useFetch<T>(url: string): FetchState<T> {
 
     const controller = new AbortController()
     const signal = controller.signal
+    let mounted = true
+
+    setData({ status: 'fetching', json: undefined })
 
     fetch(url, { signal })
       .then(responce => responce.json())
-      .then(json => { setData({ status: 'success', json }) })
-      .catch(() => { setData({ status: 'error', json: undefined }) })
+      .then(json => { if (mounted) setData({ status: 'success', json }) })
+      .catch(() => { if (mounted) setData({ status: 'error', json: undefined }) })
 
-    return () => controller.abort()
+    return () => {
+      mounted = false
+      controller.abort()
+    }
   }, [url])
 
   return data

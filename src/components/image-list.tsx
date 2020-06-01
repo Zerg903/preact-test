@@ -1,5 +1,7 @@
 import { h, JSX } from 'preact'
+import { Message } from './message'
 import { useFetch } from '~/utils/use-fetch'
+import { Host } from '~/config'
 
 type Props = {
   size: number,
@@ -13,7 +15,7 @@ type Item = {
 
 export const ImageList = (props: Props) => {
 
-  const url = 'http://jsonplaceholder.typicode.com/photos'
+  const url = `${Host}photos`
   const state = useFetch<Item[]>(url)
 
   let view: JSX.Element
@@ -27,12 +29,12 @@ export const ImageList = (props: Props) => {
       break
     case 'error':
       {
-        view = <div class=".text-danger">errror!</div>
+        view = <Message text="errror!" type="danger" />
       }
       break
     default:
       {
-        view = <div class="text-primary">fetching...</div>
+        view = <Message text="fetching..." type="default" />
       }
       break
   }

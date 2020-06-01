@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { useMemo, useReducer } from 'preact/hooks'
 import { makeItemOptions } from '~/utils/list-item'
-import { City } from '~/models/city'
+import { City } from '~/models'
 import { Action, Errors, onChangeHandler, useSubmitHandler, onClickHandler } from '~/utils/form'
 
 export type Props = {
