@@ -1,32 +1,13 @@
 import { h, JSX } from 'preact'
-import { Message } from './message'
-import { Host } from '~/config'
-import { useFetch } from '~/utils/use-fetch'
 import { Post } from '~/models'
 
 type Props = {
-  postId: number,
+  items: Post[],
   onSelect: (id: number) => void,
+  postId: number,
 }
 
-export const Posts = ({ postId, onSelect }: Props) => {
-
-  const url = `${Host}posts`
-  const state = useFetch<Post[]>(url)
-
-  switch (state.status) {
-    case 'success':
-      return <PostList items={state.json.slice(0, 5)} postId={postId} onSelect={onSelect} />
-
-    case 'error':
-      return <Message text="errror!" type="danger" />
-
-    default:
-      return <Message text="fetching..." type="default" />
-  }
-}
-
-const PostList = (props: { items: Post[], onSelect: Props['onSelect'], postId: number }) => {
+export const PostList = (props: Props) => {
 
   const { items, postId, onSelect } = props
 

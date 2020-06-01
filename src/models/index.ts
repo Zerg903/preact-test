@@ -1,4 +1,11 @@
 
+export type Image = {
+  title: string,
+  url: string,
+  thumbnailUrl: string,
+}
+
+
 export type City = {
   id: number,
   name: string,

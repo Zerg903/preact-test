@@ -1,29 +1,5 @@
 import { h } from 'preact'
-import { Message } from './message'
-import { Host } from '~/config'
-import { useFetch } from '~/utils/use-fetch'
 import { Comment } from '~/models'
-
-type Props = {
-  postId: number,
-}
-
-export const Comments = ({ postId }: Props) => {
-
-  const url = `${Host}posts/${postId}/comments`
-  const state = useFetch<Comment[]>(url)
-
-  switch (state.status) {
-    case 'success':
-      return <CommentList items={state.json.slice(0, 10)} />
-
-    case 'error':
-      return <Message text="errror!" type="danger" />
-      
-    default:
-      return <Message text={`fetching for id=${postId} ...`} type="default" />
-  }
-}
 
 export const CommentList = (props: { items: Comment[] }) => (
   <div class="list-group">
