@@ -76,7 +76,7 @@ export const Form = ({ data }: Props) => {
   const onClick = onClickHandler(dispatch)
 
   const cities = useMemo(() => makeItemOptions(data.allIds.map(id => data.byId[id])), [data])
-  const streets = useMemo(() => makeItemOptions(state.cityId != '' ? data.byId[state.cityId].streets : []), [data, state.cityId])
+  const streets = useMemo(() => makeItemOptions(state.cityId !== '' ? data.byId[state.cityId].streets : []), [data, state.cityId])
 
   return (
     <form onSubmit={onSubmit}>
