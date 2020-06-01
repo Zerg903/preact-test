@@ -1,4 +1,4 @@
-import { h, JSX } from 'preact'
+import { h } from 'preact'
 import { Message } from './message'
 import { useFetch } from '~/utils/use-fetch'
 import { Host } from '~/config'
@@ -13,34 +13,26 @@ type Item = {
   thumbnailUrl: string,
 }
 
-export const ImageList = (props: Props) => {
+export const Images = (props: Props) => {
 
   const url = `${Host}photos`
   const state = useFetch<Item[]>(url)
 
-  let view: JSX.Element
-
   switch (state.status) {
     case 'success':
-      {
-        const items = state.json.slice(0, props.size)
-        view = <div>{items.map(i => <Image {...i} />)}</div>
-      }
-      break
-    case 'error':
-      {
-        view = <Message text="errror!" type="danger" />
-      }
-      break
-    default:
-      {
-        view = <Message text="fetching..." type="default" />
-      }
-      break
-  }
+      return <ImageList items={state.json.slice(0, props.size)} />
 
-  return view
+    case 'error':
+      return <Message text="errror!" type="danger" />
+
+    default:
+      return <Message text="fetching..." type="default" />
+  }
 }
+
+const ImageList = (props: { items: Item[] }) => (
+  <div>{props.items.map(i => <Image {...i} />)}</div>
+)
 
 const Image = (props: Item) => (
   <img class="img-thumbnail m-2" src={props.thumbnailUrl} title={props.title} />

@@ -6,4 +6,3 @@ export const Home = () => (
     <PageHeader text="Home page" />
   </Fragment>
 )
-

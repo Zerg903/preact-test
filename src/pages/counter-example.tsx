@@ -2,9 +2,9 @@ import { Fragment, h } from 'preact'
 import { Counter } from '~/components/counter'
 import { PageHeader } from '~/components/page-header'
 
-export const Page1 = () => (
+export const CounterExample = () => (
   <Fragment>
-    <PageHeader text="Page 1" />
+    <PageHeader text="Counter example" />
     <Counter />
   </Fragment>
 )

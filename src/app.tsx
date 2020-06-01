@@ -1,18 +1,18 @@
 import Router, { Route } from 'preact-router'
 import { h } from 'preact'
 import { Link } from 'preact-router/match'
-import { Page1 } from '~/pages/page1'
-import { Page2 } from '~/pages/page2'
+import { CounterExample } from '~/pages/counter-example'
+import { FetchExample } from '~/pages/fetch-example'
 import { Home } from '~/pages/home'
-import { FormPage } from '~/pages/form-page'
-import { MasterSlavePage } from '~/pages/master-slave'
+import { FormExample } from '~/pages/form-example'
+import { MasterSlaveExample } from '~/pages/master-slave-example '
 
 const Routes = {
   Home: '/',
-  Page1: '/page1',
-  Page2: '/page2',
-  FormExample: '/form-example',
-  MasterSlave: '/master-slave',
+  CounterExample: '/counter',
+  FetchExample: '/fetch',
+  FormExample: '/form',
+  MasterSlaveExample: '/master-slave',
 }
 
 export const App = () => (
@@ -20,17 +20,17 @@ export const App = () => (
     <h1 class="bg-success p-3 text-center text-white bg-dark">preact test</h1>
     <ul class="nav">
       <RouteLink href={Routes.Home} name="Home" />
-      <RouteLink href={Routes.Page1} name="Page 1" />
-      <RouteLink href={Routes.Page2} name="Page 2" />
-      <RouteLink href={Routes.FormExample} name="Page with form" />
-      <RouteLink href={Routes.MasterSlave} name="Master/Slave" />
+      <RouteLink href={Routes.CounterExample} name="Counter" />
+      <RouteLink href={Routes.FetchExample} name="Fetch example" />
+      <RouteLink href={Routes.FormExample} name="Form example" />
+      <RouteLink href={Routes.MasterSlaveExample} name="Master/Slave example" />
     </ul >
     <div>
       <Router>
-        <Route path={Routes.Page1} component={Page1} />
-        <Route path={Routes.Page2} component={Page2} />
-        <Route path={Routes.FormExample} component={FormPage} />
-        <Route path={Routes.MasterSlave} component={MasterSlavePage} />
+        <Route path={Routes.CounterExample} component={CounterExample} />
+        <Route path={Routes.FetchExample} component={FetchExample} />
+        <Route path={Routes.FormExample} component={FormExample} />
+        <Route path={Routes.MasterSlaveExample} component={MasterSlaveExample} />
         <Route default component={Home} />
       </Router>
     </div>

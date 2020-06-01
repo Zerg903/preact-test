@@ -5,46 +5,41 @@ import { useFetch } from '~/utils/use-fetch'
 import { Post } from '~/models'
 
 type Props = {
-  activePostId: number,
+  postId: number,
   onSelect: (id: number) => void,
 }
 
-export const PostList = ({ activePostId, onSelect }: Props) => {
+export const Posts = ({ postId, onSelect }: Props) => {
 
   const url = `${Host}posts`
   const state = useFetch<Post[]>(url)
 
-  let view: JSX.Element
-
   switch (state.status) {
     case 'success':
-      {
-        const items = state.json.slice(0, 5)
-        view = (
-          <div class="list-group">
-            {items.map(i => (
-              <PostListItem {...i} active={i.id === activePostId} onSelect={onSelect} key={i.id} />
-            ))}
-          </div>
-        )
-      }
-      break
-    case 'error':
-      {
-        view = <Message text="errror!" type="danger" />
-      }
-      break
-    default:
-      {
-        view = <Message text="fetching..." type="default" />
-      }
-      break
-  }
+      return <PostList items={state.json.slice(0, 5)} postId={postId} onSelect={onSelect} />
 
-  return view
+    case 'error':
+      return <Message text="errror!" type="danger" />
+
+    default:
+      return <Message text="fetching..." type="default" />
+  }
 }
 
-const PostListItem = (props: Post & { active: boolean, onSelect: (id: number) => void }) => {
+const PostList = (props: { items: Post[], onSelect: Props['onSelect'], postId: number }) => {
+
+  const { items, postId, onSelect } = props
+
+  return (
+    <div class="list-group">
+      {items.map(i => (
+        <PostListItem {...i} active={i.id === postId} onSelect={onSelect} key={i.id} />
+      ))}
+    </div>
+  )
+}
+
+const PostListItem = (props: Post & { onSelect: Props['onSelect'], active: boolean }) => {
 
   const onClick = (e: JSX.TargetedEvent<HTMLElement, Event>) => {
     props.onSelect(props.id)
